@@ -3,10 +3,7 @@ package com.shardams.notesapp.feature_note.presentation.notes.components
 import android.graphics.Color.BLACK
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
@@ -19,10 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
 import com.shardams.notesapp.feature_note.domain.model.Note
+import com.shardams.notesapp.ui.theme.NotesAppTheme
 
 @Composable
 fun NoteItem(
@@ -50,16 +49,14 @@ fun NoteItem(
                     color = Color(note.color),
                     size = size,
                     cornerRadius = CornerRadius(cornerRadius.toPx()),
-
-                    )
+                )
 
                 drawRoundRect(
                     color = Color(ColorUtils.blendARGB(note.color, BLACK, 0.2f)),
                     topLeft = Offset(size.width - cutCornerSize.toPx(), -100f),
                     size = Size(cutCornerSize.toPx() + 100f, cutCornerSize.toPx() + 100f),
                     cornerRadius = CornerRadius(cornerRadius.toPx()),
-
-                    )
+                )
             }
         }
 
@@ -86,16 +83,16 @@ fun NoteItem(
                 maxLines = 10,
                 overflow = TextOverflow.Ellipsis
             )
-
-            IconButton(
-                modifier = Modifier.align(Alignment.BottomEnd),
-                onClick = onDeleteClick,
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Note"
-                )
-            }
+        }
+        IconButton(
+            modifier = Modifier.align(Alignment.BottomEnd),
+            onClick = onDeleteClick,
+        ) {
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Delete Note",
+                tint = Color.Red
+            )
         }
     }
 
